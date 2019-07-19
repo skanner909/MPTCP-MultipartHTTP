@@ -1,0 +1,36 @@
+         # skillet preamble information used by panhandler
+# ---------------------------------------------------------------------
+# unique snippet name
+name: MPTCP-MultipartHTTP
+# label used for menu selection
+label: MPTCP-MultipartHTTP
+description: This skillet configures the Firewall to block Multipath TCP (MPTCP) and Multipart HTTP.
+
+# type of device configuration
+# common types are panorama, panos, and template
+# https://github.com/PaloAltoNetworks/panhandler/blob/develop/docs/metadata_configuration.rst
+type: panos
+# preload static or default-based templates
+extends:
+
+# grouping of like snippets for dynamic menu creation in panhandler
+labels:
+  collection:
+    - Configure
+    - BreenSkillets
+
+# ---------------------------------------------------------------------
+# end of preamble section
+
+# snippets section
+# ---------------------------------------------------------------------
+# snippets used for api configuration including xpath and element as file name
+# files will load in the order listed
+snippets:
+  - name: MPTCP-MultipartHTTP
+    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting/tcp
+    file: MPTCP.xml
+    xpath: /config/devices/entry[@name='localhost.localdomain']/deviceconfig/setting/ctd
+    file: MSHTTP.xml
+# ---------------------------------------------------------------------
+# end of snippets section
